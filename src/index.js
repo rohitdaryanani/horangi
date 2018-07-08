@@ -8,7 +8,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 const client = new ApolloClient({
-    uri: "intense-sierra-67303.herokuapp.com/gql"
+    uri: "https://intense-sierra-67303.herokuapp.com/gql"
 });
 
 const Root = () => (
