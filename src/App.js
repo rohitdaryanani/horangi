@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Signup from './components/Signup'
+import Signup from './components/Signup';
+import Login from './components/Login';
 import logo from './logo.svg';
 import './App.css';
 
@@ -12,6 +13,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <Signup />
+        <Login />
       </div>
     );
   }
