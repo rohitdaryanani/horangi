@@ -15,7 +15,7 @@ const Signup = () => {
   return (
     <Mutation mutation={LOGIN}>
       {(login, { data, error }) => (
-        <div>
+        <div className="auth-container">
           <form
             onSubmit={e => {
               e.preventDefault();
@@ -23,20 +23,16 @@ const Signup = () => {
               email.value = "";
               password.value = "";
             }}
-          >
-            <input
-              ref={node => {
-                email = node;
-              }}
-              name="email"
-            />
-            <input
-              ref={node => {
-                password = node;
-              }}
-              name="password"
-            />
-            <button type="submit">Login!</button>
+          >                  
+            <div className="input-field">
+              <input ref={node => { email = node; }} name="email" type="email" required/>
+              <label htmlFor="email">Email</label>
+            </div>
+            <div className="input-field">
+              <input ref={node => { password = node; }} name="password" type="password" required/>
+              <label className="validate" htmlFor="password">Password</label>
+            </div>
+            <button className="waves-effect waves-light btn auth-button" type="submit">Log in</button>
           </form>
           {error ? error.message : ''}
         </div>

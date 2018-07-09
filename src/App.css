@@ -26,3 +26,43 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.sign-up-container {
+  width: 380px;
+  margin: 4em auto !important;
+  padding: 3em 2em 2em 2em;
+  background: #fafafa;
+  border: 1px solid #ebebeb;
+}
+
+.group {
+  width: 100% !important;
+  margin-bottom: 20px !important;
+}
+
+.input {
+  font-size: 18px !important;
+  padding: 2px !important;
+  color: #636363 !important;
+}
+
+.auth-container {
+  width: 380px;
+  margin: 15% auto;
+  padding: 40px 30px;
+  background: #fafafa;
+  border: 1px solid #ebebeb;
+}
+
+.auth-button {
+  border: 1px solid #1d2934;
+  background: #1d2934;
+  color: #fff;
+  width: 100%;
+  font-size: 12px;
+}
+
+.auth-form {
+  width: 380px;
+  margin: 55px auto;
+}

@@ -29,12 +29,14 @@ const Signup = () => {
                 email = node;
               }}
               name="email"
+              required
             />
             <input
               ref={node => {
                 password = node;
               }}
               name="password"
+              required
             />
             <button type="submit">Sign Up!</button>
           </form>
