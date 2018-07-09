@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import { Query, Mutation } from 'react-apollo';
 import {GET_TODOS} from '../queries'
-import {DELETE_TODO, UPDATE_TODO} from '../mutations'
+import {DELETE_TODO} from '../mutations'
+import EditTodo from './EditTodo'
 
 class TodoList extends Component {
   
@@ -9,10 +10,6 @@ class TodoList extends Component {
     deleteTodo({variables: {id}})
   }
 
-  updateTodoHandler = (updateTodo, id, text, completed) => {
-    updateTodo({variables: {id, text, completed: !completed}})
-
-  }
   render() {
     return (
       <Query query={GET_TODOS}>
@@ -23,16 +20,7 @@ class TodoList extends Component {
             <ul>
               {data.todos.map(({id, text, completed}) => (
                   <li key={id}>
-                    <Mutation mutation={UPDATE_TODO}>
-                      {(updateTodo, {data, error}) => (
-                        <input 
-                          type="checkbox" 
-                          name="completed" 
-                          checked={completed} 
-                          onChange={() => this.updateTodoHandler(updateTodo, id, text, completed)}
-                        />
-                      )}
-                    </Mutation>
+                    <EditTodo id={id} text={text} completed={completed} />
                     {text}
                     <Mutation mutation={DELETE_TODO} refetchQueries={[{query: GET_TODOS}]}>
                       {(deleteTodo, {data, error}) => (
