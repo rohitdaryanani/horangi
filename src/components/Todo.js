@@ -8,7 +8,6 @@ query todos {
     id
     text
     completed
-    completedAt
   }
 }
 `
@@ -30,22 +29,35 @@ mutation deleteTodo($id: String){
   }
 }`
 
+const UPDATE_TODO = gql`
+mutation updateTodo($id: String, $text: String, $completed: Boolean ){
+  updateTodo(id: $id, text: $text, completed: $completed) {
+    id,
+    text,
+    completed,
+  }
+}
+`
+
 class Todo extends Component {
   state = {
     todoText: ''
   }
 
-  submitTodo = (event, addTodo) => {
+  submitTodoHandler = (event, addTodo) => {
     const {todoText} = this.state;
     event.preventDefault();
     addTodo({variables: {text: todoText}})
-    this.setState({
-      todoText: '',
-    })
+    this.setState({ todoText: '', })
   }
 
   deleteTodoHandler = (deleteTodo, id) => {
     deleteTodo({variables: {id}})
+  }
+
+  updateTodoHandler = (updateTodo, id, text, completed) => {
+    updateTodo({variables: {id, text, completed: !completed}})
+
   }
   render() {
     return (
@@ -61,7 +73,7 @@ class Todo extends Component {
           }}
         >
           {(addTodo, { data, error }) => (
-            <form onSubmit={(event) => this.submitTodo(event, addTodo)}>
+            <form onSubmit={(event) => this.submitTodoHandler(event, addTodo)}>
               <input 
                 type="text" 
                 name="todo" 
@@ -77,8 +89,18 @@ class Todo extends Component {
           if (error) return `Error! ${error.message}`;
           return (
             <ul>
-              {data.todos.map(({id, text}) => (
+              {data.todos.map(({id, text, completed}) => (
                   <li key={id}>
+                    <Mutation mutation={UPDATE_TODO}>
+                      {(updateTodo, {data, error}) => (
+                        <input 
+                          type="checkbox" 
+                          name="completed" 
+                          checked={completed} 
+                          onChange={() => this.updateTodoHandler(updateTodo, id, text, completed)}
+                        />
+                      )}
+                    </Mutation>
                     {text}
                     <Mutation mutation={DELETE_TODO} refetchQueries={[{query: GET_TODOS}]}>
                       {(deleteTodo, {data, error}) => (
