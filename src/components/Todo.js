@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Query, Mutation } from 'react-apollo';
 import {GET_TODOS} from '../queries'
-import {ADD_TODO, DELETE_TODO, UPDATE_TODO} from '../mutations'
+import {ADD_TODO} from '../mutations'
 import TodoList from './TodoList'
 
 class Todo extends Component {
@@ -15,15 +15,7 @@ class Todo extends Component {
     addTodo({variables: {text: todoText}})
     this.setState({ todoText: '', })
   }
-
-  deleteTodoHandler = (deleteTodo, id) => {
-    deleteTodo({variables: {id}})
-  }
-
-  updateTodoHandler = (updateTodo, id, text, completed) => {
-    updateTodo({variables: {id, text, completed: !completed}})
-
-  }
+  
   render() {
     return (
       <div>

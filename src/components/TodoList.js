@@ -3,6 +3,7 @@ import { Query, Mutation } from 'react-apollo';
 import {GET_TODOS} from '../queries'
 import {DELETE_TODO} from '../mutations'
 import EditTodo from './EditTodo'
+import DeleteTodo from './DeleteTodo'
 
 class TodoList extends Component {
   
@@ -19,18 +20,11 @@ class TodoList extends Component {
           return (
             <ul>
               {data.todos.map(({id, text, completed}) => (
-                  <li key={id}>
-                    <EditTodo id={id} text={text} completed={completed} />
-                    {text}
-                    <Mutation mutation={DELETE_TODO} refetchQueries={[{query: GET_TODOS}]}>
-                      {(deleteTodo, {data, error}) => (
-                        <button 
-                          onClick={() => this.deleteTodoHandler(deleteTodo, id)}>
-                          Delete
-                        </button>
-                      )}
-                    </Mutation>
-                  </li>
+                <li key={id}>
+                  <EditTodo id={id} text={text} completed={completed} />
+                  {text}
+                  <DeleteTodo id={id} />
+                </li>
               ))}
             </ul>
           );
