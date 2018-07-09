@@ -3,7 +3,7 @@ import gql from "graphql-tag";
 import { Query, Mutation } from "react-apollo";
 
 const GET_TODOS = gql`
-{
+query todos {
   todos {
     id
     text
@@ -23,6 +23,13 @@ mutation addTodo($text: String){
   }
 }`
 
+const DELETE_TODO = gql`
+mutation deleteTodo($id: String){
+  deleteTodo(id: $id) {
+    id
+  }
+}`
+
 class Todo extends Component {
   state = {
     todoText: ''
@@ -35,6 +42,10 @@ class Todo extends Component {
     this.setState({
       todoText: '',
     })
+  }
+
+  deleteTodoHandler = (deleteTodo, id) => {
+    deleteTodo({variables: {id}})
   }
   render() {
     return (
@@ -66,9 +77,19 @@ class Todo extends Component {
           if (error) return `Error! ${error.message}`;
           return (
             <ul>
-            {data.todos.map(todo => (
-              <li key={todo.id}>{todo.text}</li>
-            ))}
+              {data.todos.map(({id, text}) => (
+                  <li key={id}>
+                    {text}
+                    <Mutation mutation={DELETE_TODO} refetchQueries={[{query: GET_TODOS}]}>
+                      {(deleteTodo, {data, error}) => (
+                        <button 
+                          onClick={() => this.deleteTodoHandler(deleteTodo, id)}>
+                          Delete
+                        </button>
+                      )}
+                    </Mutation>
+                  </li>
+              ))}
             </ul>
           );
         }}
