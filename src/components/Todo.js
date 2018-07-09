@@ -1,34 +1,7 @@
 import React, {Component} from 'react';
-import gql from 'graphql-tag';
 import { Query, Mutation } from 'react-apollo';
 import {GET_TODOS} from '../queries'
-
-const ADD_TODO = gql`
-mutation addTodo($text: String){
-  addTodo(text: $text) {
-    id,
-    text,
-    completed,
-    completedAt
-  }
-}`
-
-const DELETE_TODO = gql`
-mutation deleteTodo($id: String){
-  deleteTodo(id: $id) {
-    id
-  }
-}`
-
-const UPDATE_TODO = gql`
-mutation updateTodo($id: String, $text: String, $completed: Boolean ){
-  updateTodo(id: $id, text: $text, completed: $completed) {
-    id,
-    text,
-    completed,
-  }
-}
-`
+import {ADD_TODO, DELETE_TODO, UPDATE_TODO} from '../mutations'
 
 class Todo extends Component {
   state = {
