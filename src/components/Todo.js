@@ -1,16 +1,7 @@
 import React, {Component} from 'react';
-import gql from "graphql-tag";
-import { Query, Mutation } from "react-apollo";
-
-const GET_TODOS = gql`
-query todos {
-  todos {
-    id
-    text
-    completed
-  }
-}
-`
+import gql from 'graphql-tag';
+import { Query, Mutation } from 'react-apollo';
+import {GET_TODOS} from '../queries'
 
 const ADD_TODO = gql`
 mutation addTodo($text: String){
