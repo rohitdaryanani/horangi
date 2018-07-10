@@ -10,11 +10,13 @@ class DeleteTodo extends Component {
   }
 
   render() {
-    const {id} = this.props;
+    const {id, completed} = this.props;
+    console.log(completed)
     return (
       <Mutation mutation={DELETE_TODO} refetchQueries={[{query: GET_TODOS}]}>
         {(deleteTodo, {data, error}) => (
-          <button 
+          completed && <button 
+            className="todo-delete"
             onClick={() => this.deleteTodoHandler(deleteTodo, id)}>
             Delete
           </button>

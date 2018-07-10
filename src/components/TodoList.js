@@ -23,7 +23,7 @@ class TodoList extends Component {
               {data.todos.map(({id, text, completed}) => (
                 <li className="todo-item" key={id}>
                   <EditTodo id={id} text={text} completed={completed} />
-                  <DeleteTodo id={id} />
+                  <DeleteTodo id={id} completed={completed}/>
                 </li>
               ))}
               </ul>
