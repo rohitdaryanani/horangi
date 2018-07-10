@@ -9,8 +9,8 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 
 import './index.css';
 import App from './App';
-import Login from './components/Login';
-import Signup from './components/Signup';
+import Login from './components/Auth/Login';
+import Signup from './components/Auth/Signup';
 import Todo from './components/Todo';
 
 const httpLink = new HttpLink({ uri: 'https://intense-sierra-67303.herokuapp.com/gql' });
