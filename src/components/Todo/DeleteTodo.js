@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Mutation } from 'react-apollo';
-import {GET_TODOS} from '../queries'
-import {DELETE_TODO} from '../mutations'
+import {GET_TODOS} from '../../queries'
+import {DELETE_TODO} from '../../mutations'
 
 class DeleteTodo extends Component {
   

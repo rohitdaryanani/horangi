@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Query, Mutation } from 'react-apollo';
-import { GET_TODOS } from '../queries';
-import { ADD_TODO } from '../mutations';
+import { GET_TODOS } from '../../queries';
+import { ADD_TODO } from '../../mutations';
 import TodoList from './TodoList';
 
 class Todo extends Component {

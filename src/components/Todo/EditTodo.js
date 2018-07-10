@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Mutation } from 'react-apollo';
-import {UPDATE_TODO} from '../mutations'
+import {UPDATE_TODO} from '../../mutations'
 
 class EditTodo extends Component {
   

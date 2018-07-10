@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 import { Query, Mutation } from 'react-apollo';
-import {GET_TODOS} from '../queries'
-import {DELETE_TODO} from '../mutations'
+import {GET_TODOS} from '../../queries'
 import EditTodo from './EditTodo'
 import DeleteTodo from './DeleteTodo'
-import Loader from './Loader'
+import Loader from '../Loader'
 
 class TodoList extends Component {
   
