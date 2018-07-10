@@ -9,6 +9,13 @@ class Todo extends Component {
     todoText: ''
   };
 
+  componentDidMount(){
+    const token = localStorage.getItem('token');
+    if (!token) {
+      this.props.history.push('/login');
+    }
+  }
+
   addTodoHandler = (event, addTodo) => {
     const { todoText } = this.state;
     event.preventDefault();
@@ -36,6 +43,7 @@ class Todo extends Component {
                   <input
                     type="text"
                     name="todo"
+                    className="active"
                     value={this.state.todoText}
                     required
                     placeholder="e.g Be awesome"

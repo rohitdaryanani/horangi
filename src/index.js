@@ -33,7 +33,6 @@ const authWare = new ApolloLink((operation, forward) => {
 
     if (headers) {
       const token = headers.get('x-auth');
-      console.log(token)
       if (token) {
         localStorage.setItem('token', token);
       }

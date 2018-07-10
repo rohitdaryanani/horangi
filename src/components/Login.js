@@ -1,6 +1,8 @@
 import React from 'react';
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
+import Loader from './Loader'
+
 
 const LOGIN = gql`
   mutation signup($email: String!, $password: String!){
@@ -10,11 +12,15 @@ const LOGIN = gql`
   }
 `
 
-const Signup = () => {
+const completed = (props) => {
+  props.history.push('/');
+}
+
+const Signup = (props) => {
   let email, password;
   return (
-    <Mutation mutation={LOGIN}>
-      {(login, { data, error }) => (
+    <Mutation mutation={LOGIN} onCompleted={() => completed(props)}>
+      {(login, { loading, data, error }) => (
         <div className="auth-container">
           <form
             onSubmit={e => {
@@ -26,13 +32,17 @@ const Signup = () => {
           >                  
             <div className="input-field">
               <input ref={node => { email = node; }} name="email" type="email" required/>
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email" className="active">Email</label>
             </div>
             <div className="input-field">
               <input ref={node => { password = node; }} name="password" type="password" required/>
-              <label className="validate" htmlFor="password">Password</label>
+              <label className="active" htmlFor="password">Password</label>
             </div>
-            <button className="waves-effect waves-light btn auth-button" type="submit">Log in</button>
+            {!loading ? <button 
+              className="waves-effect waves-light btn auth-button" type="submit" disabled={loading}>
+              Log in
+            </button> : <Loader />
+            }
           </form>
           {error ? error.message : ''}
         </div>
