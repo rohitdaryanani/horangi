@@ -22,6 +22,7 @@ check the live version [here](http://rohit-horangi.surge.sh/)
 
   - [materializecss](https://materializecss.com//) - for quick css styles and ui
   - [react](https://facebook.github.io/react/) - awesome view library
+  - [react-router](https://github.com/ReactTraining/react-router) - for routing
   - [GraphQL](https://graphql.org/) - for querying the API *really amazing*
   - [Apollo Client](https://graphql.org/) - client side library for graphql 
   - [create-react-app](https://github.com/facebookincubator/create-react-app) - react project generator by facebook this handles the initial file struture and zero configuration
@@ -46,12 +47,14 @@ check the live version [here](http://rohit-horangi.surge.sh/)
       ├── queries
       ├── index.css
       ├── index.js
+      ├── App.css
+      ├── App.js
       ├── logo.svg
       └── registerServiceWorker.js
   ```
 
   - build - is the transpiled and minified source for the project and is used for deployment
-  - src - is where are code is and is divided into 4 folders
+  - src - is where are code is and is divided into 3 folders
     - components - interaction with the data and UI breaking them down by features
     - queries - GraphQL related queries
     - mutations - GraphQL related mutations
