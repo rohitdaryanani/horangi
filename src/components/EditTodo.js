@@ -13,12 +13,16 @@ class EditTodo extends Component {
     return (
       <Mutation mutation={UPDATE_TODO}>
         {(updateTodo, {data, error}) => (
-          <input 
+          <span>
+            <input 
             type="checkbox" 
-            name="completed" 
+            name="completed"
+            id={id}
             checked={completed} 
             onChange={() => this.updateTodoHandler(updateTodo, id, text, completed)}
-          />
+            />
+            <label htmlFor={id}>{text}</label>
+          </span>
         )}
       </Mutation>
     )

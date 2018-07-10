@@ -18,15 +18,16 @@ class TodoList extends Component {
           if (loading) return "Loading...";
           if (error) return `Error! ${error.message}`;
           return (
-            <ul>
+            <div className="todo-list">
+              <ul>
               {data.todos.map(({id, text, completed}) => (
-                <li key={id}>
+                <li className="todo-item" key={id}>
                   <EditTodo id={id} text={text} completed={completed} />
-                  {text}
                   <DeleteTodo id={id} />
                 </li>
               ))}
-            </ul>
+              </ul>
+            </div>
           );
         }}
       </Query>
