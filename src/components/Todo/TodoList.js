@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Query, Mutation } from 'react-apollo';
+import { Query } from 'react-apollo';
 import {GET_TODOS} from '../../queries'
 import EditTodo from './EditTodo'
 import DeleteTodo from './DeleteTodo'

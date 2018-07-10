@@ -15,6 +15,7 @@ const AuthForm = props => {
     >
       <div className="input-field">
         <input
+          autoFocus
           ref={node => {
             email = node;
           }}

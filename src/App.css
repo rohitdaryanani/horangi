@@ -129,6 +129,7 @@
 .todo-list {
   text-align: left;
   padding: 0 4rem;
+  min-height: 111px;
 }
 
 .todo-item {
@@ -170,4 +171,10 @@
 
 .link-label{
   color: #f46411;
+}
+
+.logout-link {
+  cursor: pointer;
+  float: right;
+  margin: 0 4rem 1rem 0;
 }

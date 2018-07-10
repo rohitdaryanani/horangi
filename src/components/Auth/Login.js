@@ -14,6 +14,10 @@ const errorHandler = (error) => {
 }
 
 const Login = (props) => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    props.history.push('/');
+  }
   return (
     <Mutation 
       mutation={LOGIN} 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Query, Mutation } from 'react-apollo';
+import { Mutation } from 'react-apollo';
 import { GET_TODOS } from '../../queries';
 import { ADD_TODO } from '../../mutations';
 import TodoList from './TodoList';
@@ -25,6 +25,11 @@ class Todo extends Component {
     this.setState({ todoText: '' });
   };
 
+  logoutHandler = () => {
+    localStorage.removeItem('token')
+    this.props.history.push('/login');
+  }
+
   render() {
     return (
       <div className="todo-container">
@@ -43,6 +48,7 @@ class Todo extends Component {
               <form onSubmit={event => this.addTodoHandler(event, addTodo)}>
                 <div className="input-field">
                   <input
+                    autoFocus
                     type="text"
                     name="todo"
                     value={this.state.todoText}
@@ -59,6 +65,9 @@ class Todo extends Component {
           )}
         </Mutation>
         <TodoList />
+        <p className="logout-link link-label" onClick={this.logoutHandler}>
+        Logout
+      </p>
       </div>
     );
   }
