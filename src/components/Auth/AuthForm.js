@@ -1,5 +1,5 @@
 import React from 'react';
-import Loader from '../Loader'
+import Loader from '../Utils/Loader'
 
 const AuthForm = props => {
   const {loading, submitName, action} = props

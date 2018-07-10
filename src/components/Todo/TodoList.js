@@ -3,7 +3,7 @@ import { Query, Mutation } from 'react-apollo';
 import {GET_TODOS} from '../../queries'
 import EditTodo from './EditTodo'
 import DeleteTodo from './DeleteTodo'
-import Loader from '../Loader'
+import Loader from '../Utils/Loader'
 
 class TodoList extends Component {
   
