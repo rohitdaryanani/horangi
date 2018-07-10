@@ -4,6 +4,7 @@ import {GET_TODOS} from '../queries'
 import {DELETE_TODO} from '../mutations'
 import EditTodo from './EditTodo'
 import DeleteTodo from './DeleteTodo'
+import Loader from './Loader'
 
 class TodoList extends Component {
   
@@ -15,7 +16,7 @@ class TodoList extends Component {
     return (
       <Query query={GET_TODOS}>
         {({ loading, error, data }) => {
-          if (loading) return "Loading...";
+          if (loading) return <Loader />;
           if (error) return `Error! ${error.message}`;
           return (
             <div className="todo-list">

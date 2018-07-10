@@ -11,7 +11,6 @@ class DeleteTodo extends Component {
 
   render() {
     const {id, completed} = this.props;
-    console.log(completed)
     return (
       <Mutation mutation={DELETE_TODO} refetchQueries={[{query: GET_TODOS}]}>
         {(deleteTodo, {data, error}) => (
