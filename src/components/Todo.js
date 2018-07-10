@@ -19,7 +19,9 @@ class Todo extends Component {
   addTodoHandler = (event, addTodo) => {
     const { todoText } = this.state;
     event.preventDefault();
-    addTodo({ variables: { text: todoText } });
+    addTodo({ 
+      variables: { text: todoText },
+    });
     this.setState({ todoText: '' });
   };
 

@@ -150,6 +150,10 @@
   font-size: 10px;
 }
 
+.todo-delete:focus {
+  background-color: transparent;
+}
+
 .preloader-background {
   margin: 0 auto;
   text-align: center;

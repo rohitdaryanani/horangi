@@ -5,7 +5,20 @@ import {UPDATE_TODO} from '../mutations'
 class EditTodo extends Component {
   
   updateTodoHandler = (updateTodo, id, text, completed) => {
-    updateTodo({variables: {id, text, completed: !completed}})
+    updateTodo(
+      {
+        variables: {id, text, completed: !completed},
+        optimisticResponse: {
+          __typename: "Mutation",
+          updateTodo: {
+            completed: !completed,
+            id,
+            text,
+            __typename:"TodoType",
+          }
+        },
+      }
+    )
 
   }
   render() {
