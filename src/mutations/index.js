@@ -26,3 +26,18 @@ mutation updateTodo($id: String, $text: String, $completed: Boolean ){
   }
 }
 `
+export const LOGIN = gql`
+  mutation signup($email: String!, $password: String!){
+    login(email: $email, password: $password) {
+      id
+    }
+  }
+`
+
+export const SIGNUP = gql`
+  mutation signup($email: String!, $password: String!) {
+    signup(email: $email, password: $password) {
+      id
+    }
+  }
+`;

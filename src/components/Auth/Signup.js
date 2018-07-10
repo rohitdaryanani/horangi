@@ -1,16 +1,8 @@
 import React from 'react';
-import gql from 'graphql-tag';
 import { Mutation } from 'react-apollo';
 import { Link } from 'react-router-dom';
 import AuthForm from './AuthForm';
-
-const SIGNUP = gql`
-  mutation signup($email: String!, $password: String!) {
-    signup(email: $email, password: $password) {
-      id
-    }
-  }
-`;
+import { SIGNUP } from '../../mutations';
 
 const completed = props => {
   props.history.push('/');
