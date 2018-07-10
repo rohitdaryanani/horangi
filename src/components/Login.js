@@ -16,10 +16,18 @@ const completed = (props) => {
   props.history.push('/');
 }
 
+const errorHandler = (error) => {
+  const errorMessage = error.message.split(':')[1]
+  window.M.toast({html: errorMessage})
+}
+
 const Signup = (props) => {
   let email, password;
   return (
-    <Mutation mutation={LOGIN} onCompleted={() => completed(props)}>
+    <Mutation 
+      mutation={LOGIN} 
+      onCompleted={() => completed(props)}
+      onError={(error) => errorHandler(error)}>
       {(login, { loading, data, error }) => (
         <div className="auth-container">
           <form
@@ -44,7 +52,6 @@ const Signup = (props) => {
             </button> : <Loader />
             }
           </form>
-          {error ? error.message : ''}
         </div>
       )}
     </Mutation>
