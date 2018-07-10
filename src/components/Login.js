@@ -1,7 +1,8 @@
 import React from 'react';
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
-import Loader from './Loader'
+import { Link } from 'react-router-dom';
+import AuthForm from './AuthForm'
 
 
 const LOGIN = gql`
@@ -21,41 +22,20 @@ const errorHandler = (error) => {
   window.M.toast({html: errorMessage})
 }
 
-const Signup = (props) => {
-  let email, password;
+const Login = (props) => {
   return (
     <Mutation 
       mutation={LOGIN} 
       onCompleted={() => completed(props)}
       onError={(error) => errorHandler(error)}>
-      {(login, { loading, data, error }) => (
+      {(login, { loading }) => (
         <div className="auth-container">
-          <form
-            onSubmit={e => {
-              e.preventDefault();
-              login({ variables: { email: email.value, password: password.value } });
-              email.value = "";
-              password.value = "";
-            }}
-          >                  
-            <div className="input-field">
-              <input ref={node => { email = node; }} name="email" placeholder="Emai e.g john@gmail.com" type="email" required/>
-              <label>Email</label>
-            </div>
-            <div className="input-field">
-              <input ref={node => { password = node; }} name="password" type="password" placeholder="Password" required/>
-              <label>Password</label>
-            </div>
-            {!loading ? <button 
-              className="waves-effect waves-light btn auth-button app-button" type="submit">
-              Log in
-            </button> : <Loader />
-            }
-          </form>
+          <AuthForm completed={completed} submitName="Log in" loading={loading} action={login}/>
+          <p className="center-align">Not a member? <Link to="/signup">Sign up</Link></p>
         </div>
       )}
     </Mutation>
   )
 }
 
-export default Signup;
+export default Login;
