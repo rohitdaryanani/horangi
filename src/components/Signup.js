@@ -38,7 +38,7 @@ const Signup = (props) => {
             action={signup}
           />
           <p className="center-align">
-            Already have an account? <Link to="/login">Log in</Link>
+            Already have an account? <Link className="link-label" to="/login">Log in</Link>
           </p>
         </div>
       )}

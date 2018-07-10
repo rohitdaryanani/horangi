@@ -31,7 +31,7 @@ const Login = (props) => {
       {(login, { loading }) => (
         <div className="auth-container">
           <AuthForm completed={completed} submitName="Log in" loading={loading} action={login}/>
-          <p className="center-align">Not a member? <Link to="/signup">Sign up</Link></p>
+          <p className="center-align">Not a member? <Link className="link-label" to="/signup">Sign up</Link></p>
         </div>
       )}
     </Mutation>
