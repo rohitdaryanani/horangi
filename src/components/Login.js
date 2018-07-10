@@ -31,15 +31,15 @@ const Signup = (props) => {
             }}
           >                  
             <div className="input-field">
-              <input ref={node => { email = node; }} name="email" type="email" required/>
-              <label htmlFor="email" className="active">Email</label>
+              <input ref={node => { email = node; }} name="email" placeholder="Emai e.g john@gmail.com" type="email" required/>
+              <label>Email</label>
             </div>
             <div className="input-field">
-              <input ref={node => { password = node; }} name="password" type="password" required/>
-              <label className="active" htmlFor="password">Password</label>
+              <input ref={node => { password = node; }} name="password" type="password" placeholder="Password" required/>
+              <label>Password</label>
             </div>
             {!loading ? <button 
-              className="waves-effect waves-light btn auth-button" type="submit" disabled={loading}>
+              className="waves-effect waves-light btn auth-button app-button" type="submit">
               Log in
             </button> : <Loader />
             }

@@ -14,7 +14,8 @@ class EditTodo extends Component {
       <Mutation mutation={UPDATE_TODO}>
         {(updateTodo, {data, error}) => (
           <span>
-            <input 
+            <input
+            className="checkbox-orange" 
             type="checkbox" 
             name="completed"
             id={id}

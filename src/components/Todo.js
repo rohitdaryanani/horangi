@@ -43,7 +43,6 @@ class Todo extends Component {
                   <input
                     type="text"
                     name="todo"
-                    className="active"
                     value={this.state.todoText}
                     required
                     placeholder="e.g Be awesome"
@@ -51,7 +50,7 @@ class Todo extends Component {
                       this.setState({ todoText: event.target.value })
                     }
                   />
-                  <label htmlFor="todo">Add Task</label>
+                  <label>Add Task</label>
                 </div>
               </form>
             </div>
