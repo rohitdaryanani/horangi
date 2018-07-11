@@ -11,9 +11,13 @@ class TodoList extends Component {
     deleteTodo({variables: {id}})
   }
 
+  componentDidMount() {
+
+  }
+
   render() {
     return (
-      <Query query={GET_TODOS}>
+      <Query query={GET_TODOS} fetchPolicy={'cache-and-network'}>
         {({ loading, error, data }) => {
           if (loading) return <Loader />;
           if (error) return `Error! ${error.message}`;
