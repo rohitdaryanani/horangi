@@ -1,6 +1,6 @@
 # Todo App using GraphQL
 
-check the live version [here](http://rohit-horangi.surge.sh/)
+check the live version [here](https://horangi.netlify.com/)
 
 ### Tech stack
 
